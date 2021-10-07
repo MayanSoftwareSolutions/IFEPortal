@@ -10,7 +10,6 @@
                     <h2 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
                        My Dashboard
                     </h2>
-                    
                 </div>
               
                  <div class="min-h-screen flex p-3">
