@@ -14,7 +14,7 @@
                 </div>
               
                  <div class="min-h-screen flex p-3">
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 rounded-lg ">
+                    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 rounded-lg ">
                         @if($settings->user_profile_widget == true)
                         <div class="col-span-1 bg-gray-200 p-3 rounded">
                             @livewire('accounts-widget')

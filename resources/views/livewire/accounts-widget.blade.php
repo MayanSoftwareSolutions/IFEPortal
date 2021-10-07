@@ -14,7 +14,10 @@
                 <p class="text-lg text-gray-500 dark:text-gray-200 font-light">
                   {{ $user->job_title }}
                 </p>
-                <p class="text-md text-gray-500 dark:text-gray-400 max-w-xs py-4 font-light">
+                <p class="text-md text-gray-500 dark:text-gray-200 font-light">
+                  {{ $user->organisation }}
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-200 font-light">
                   {{ $user->email }}
                 </p>
               </div>
