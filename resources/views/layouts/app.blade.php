@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="{{ asset('css/submit.css') }}">
         @livewireStyles
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -40,7 +40,7 @@
         @livewireScripts
         <script src="/js/app.js"></script>
         <script src="{{ asset('js/submit.js')}}" defer></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
     </body>
 
 </html>
