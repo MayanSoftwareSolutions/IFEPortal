@@ -49,7 +49,7 @@
 </div>
 
    @if (session()->has('message'))
-    <div class="flex justify-between bg-white rounded bg-gray-100 m-1 overflow-hidden p-2 space-x-1" style="max-width:12rem">
+    <div class="flex justify-between ml-2 mt-1 bg-white rounded-lg border shadow-lg overflow-hidden p-2 space-x-1" style="max-width:12rem">
       <div class="flex items-baseline"> 
           <span class="items-center justify-center p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,9 +57,10 @@
                 </svg>
             </span> 
         </div>
-      <div class="flex flex-grow items-center">
+      <div class="flex flex-grow text-gray-800 items-center">
         <p class="leading-tight text-center text-xs md:text-sm"> {{ session('message') }} </p>
       </div>
+      
     </div>
   @endif
 

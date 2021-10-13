@@ -26,7 +26,7 @@
             </div>
 
             @foreach($notifications as $notification)
-            <div class="shadow-lg rounded-lg bg-gray-100 mx-auto m-2 p-4 mr-2 notification-box flex">
+            <div class="shadow-lg rounded-lg bg-gray-200 mx-auto m-2 p-4 mr-2 notification-box flex">
                 @foreach($notification->data['notify'] as $messages)
                 <div class="pr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -55,7 +55,7 @@
 
 
             <div class="rounded-lg 
-            @if($countNotifications > 3) bg-gray-50 shadow-lg @else bg-transparent @endif mx-auto m-1 p-4 notification-box flex">
+            @if($countNotifications > 3) bg-gray-200 shadow-lg @else bg-transparent @endif mx-auto m-1 p-4 notification-box flex">
                 <div>
                 <div class="text-xs">
                     {{ $notifications->links() }}
