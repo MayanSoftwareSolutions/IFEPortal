@@ -22,9 +22,6 @@ class UserControlSettings extends Component
         $this->profile_widget = (bool) $this->settings->user_profile_widget;
         $this->activity_widget = (bool) $this->settings->user_activity_log_widget;
         $this->user_notifications = (bool) $this->settings->user_notifications;
-        $this->email_notifications = (bool) $this->settings->email_notifications;
-
-        // dd($this->profile_widget);
     }
 
     public function change($field)
@@ -43,7 +40,7 @@ class UserControlSettings extends Component
             [$field => 1]);
         }
 
-        $this->success = 'Your system setting have been applied';
+        $this->success = 'Setting have been applied';
         session()->flash('message', $this->success);
         $this->emitTo('dashboard-sortable', '$refresh');
 
