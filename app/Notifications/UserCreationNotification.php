@@ -29,7 +29,7 @@ class UserCreationNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Welcome '.$this->user->name)
-                    ->line('This is our TMO management digital platform, the smart client management solution.')
+                    ->line('This is IFE Staff digital platform, the smart client freight management solution.')
                     ->line('An account has been created for you which can be accessed via the below link. Your login credential will be sent to you by an administrator shortly.')
                     ->line('Please ensure you change your password when you first login. This can be done by clicking the user icon and selecting My Profile.')
                     ->action('My Account', url('/login'));

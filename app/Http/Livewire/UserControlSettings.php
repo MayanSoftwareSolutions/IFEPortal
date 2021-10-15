@@ -40,7 +40,7 @@ class UserControlSettings extends Component
             [$field => 1]);
         }
 
-        $this->success = 'Setting have been applied';
+        $this->success = 'Your setting have now been applied';
         session()->flash('message', $this->success);
         $this->emitTo('dashboard-sortable', '$refresh');
 

@@ -1,7 +1,7 @@
 <div>
         <div class="rounded-lg shadow-lg w-full md:w-full p-4 bg-white dark:bg-gray-800 overflow-hidden">
             <div class="w-full items-center justify-center mb-8">
-            <p class="text-gray-800 dark:text-white text-lg font-normal"> 
+            <p class="text-gray-800 dark:text-white text-md font-bold"> 
                 My Activity 
             </p>
             </div> 

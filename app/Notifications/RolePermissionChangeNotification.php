@@ -29,12 +29,11 @@ class RolePermissionChangeNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The role profile '.$this->role->title.(' was updated. The permissions to this role have been changed'))
-                    ->action('View Role', url('/roles/'.$this->role->id))
-                    ->line('You recieved this notification because you are registered as a system administrator')
-                    ->line('Thank you for using our application!');
+            ->line('The role profile '.$this->role->title.(' was updated. The permissions to this role have been changed'))
+            ->action('View Role', url('/roles/'.$this->role->id))
+            ->line('You recieved this notification because you are registered as a system administrator')
+            ->line('Thank you for using our application!');
     }
-
 
     public function toArray($notifiable)
     {

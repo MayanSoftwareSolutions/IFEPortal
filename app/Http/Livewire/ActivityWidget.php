@@ -22,7 +22,7 @@ class ActivityWidget extends Component
     public function render()
     {
         return view('livewire.activity-widget',
-        ['activity' => Activity::where('causer_id', Auth::id())->paginate(3)]
+        ['activity' => Activity::where('causer_id', Auth::id())->orderBy('id', 'DESC')->paginate(3)]
     );
     }
 }

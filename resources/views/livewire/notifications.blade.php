@@ -17,12 +17,8 @@
         </div>
         <div x-show="open" @click.away="open=false" x-transition:enter-start="transition ease-in duration-3000" class="absolute z-10 -ml-4 mt-3 transform bg-transparent px-2 sm:px-0 lg:ml-0 lg:left-0 lg:-translate-x-3/4">
 
-            <div class="shadow-none rounded-lg bg-white mx-auto m-1 p-4 mr-2 notification-box flex">
-                <div>
-                <div class="text-sm text-gray-900 font-bold float-left">
-                    My Notifications 
-                </div>
-                </div>
+            <div class="shadow-none rounded-lg bg-white mx-auto mr-2 notification-box flex">
+
             </div>
 
             @foreach($notifications as $notification)
@@ -50,18 +46,37 @@
                 
                 </div>
                 @endforeach
+                
             </div>
             @endforeach
+            @if($countNotifications > 3)
+            <div class="bg-transparent mt-2 -ml-5 notification-box flex">
+                <div class="pr-2 text-xs">
+                    <button type="button" wire:click="read" class="px-2 py-1 bg-gray-300 rounded-md text-gray-800 outline-none shadow-lg transform active:scale-x-75 transition-transform mx-5 flex">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    <span class="ml-2 font-bold">Clear All</span>
+                    </button>
+                </div>         
+            </div>
+            @endif
 
-
+            @if($countNotifications > 3)
             <div class="rounded-lg 
-            @if($countNotifications > 3) bg-gray-200 shadow-lg @else bg-transparent @endif mx-auto m-1 p-4 notification-box flex">
+            @if($countNotifications > 3) 
+            bg-gray-200 shadow-lg 
+            @else 
+            bg-transparent 
+            @endif 
+            mx-auto m-1 p-4 notification-box flex">
                 <div>
-                <div class="text-xs">
-                    {{ $notifications->links() }}
-                </div>
+                    <div class="text-xs">
+                        {{ $notifications->links() }}
+                    </div>
                 </div>
             </div>
+            @endif
 
             <style>
             .notification-box {

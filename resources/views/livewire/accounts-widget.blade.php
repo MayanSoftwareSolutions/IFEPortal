@@ -1,6 +1,11 @@
 <div>
     <div class="rounded-lg shadow-lg inline-block flex-1 w-full overflow-hidden transform transition-all sm:align-middle">
-          <div class="rounded-xl p-2 bg-white shadow-lg">
+          <div class="rounded-xl p-4 bg-white shadow-lg">
+            <div class="w-full items-center justify-center">
+            <p class="text-gray-800 dark:text-white text-md font-bold"> 
+               My Profile 
+            </p>
+            </div>
             <div class="p-8 h-full">
               <div class="text-center mb-4 opacity-90">
                 <a class="block relative">

@@ -11,12 +11,18 @@ class Notifications extends Component
 {
     use WithPagination;
 
-    protected $listener = ['markNotificationAsRead'];
+    protected $listener = ['markNotificationAsRead', 'read'];
 
 
     public function markNotificationAsRead($id)
     {
         Auth::user()->unreadNotifications->where('id', $id)->markAsRead();
+    }
+
+    public function read()
+    {
+        $notifications = auth()->user()->unreadNotifications;
+        $notifications->markAsRead();
     }
 
     public function render()
