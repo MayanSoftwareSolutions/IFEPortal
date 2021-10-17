@@ -16,7 +16,10 @@
         @livewireStyles
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/submit.js')}}" defer></script>
+        <script src="{{ asset('js/submit.js')}}"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -39,7 +42,6 @@
             </main>
         </div>
         @livewireScripts
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
     </body>
 
 </html>

@@ -94,7 +94,7 @@
               </li>
           </ul>
           @if (session()->has('message'))
-            <ul class="flex flex-col divide divide-y border-top bg-gray-200">
+            <ul class="flex flex-col divide divide-y border-top bg-gray-200" id="success-message">
               <li class="flex flex-row items-center">
                   <div class="select-none cursor-pointer flex flex-1 items-center p-2">
                       <div class="flex-1 p-1 text-center">
@@ -133,5 +133,14 @@
     background-color: #108f40;
     }
   </style>
+
+  <script>
+  $(document).on('change', function(){
+    setTimeout(function(){
+       $("#success-message").remove();
+    }, 3000 );
+
+  });
+  </script>
 
 </div>

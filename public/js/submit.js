@@ -1,6 +1,8 @@
-(function(){
-    $('.form-prevent-multiple-submits').on('submit', function(){
-        $('.button-prevent-multiple-submits').attr('disabled', 'true');
-        $('.prevent-double').show();
-    })
-})();
+window.onload = function () {
+    (function () {
+        $('.form-prevent-multiple-submits').on('submit', function () {
+            $('.button-prevent-multiple-submits').attr('disabled', 'true');
+            $('.prevent-double').show();
+        })
+    })();
+}

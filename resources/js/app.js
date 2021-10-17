@@ -6,6 +6,6 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-import Sortable from 'sortablejs';
+import $ from "jquery";
 
-window.Sortable = require('sortablejs').default;
+
