@@ -19,16 +19,17 @@ class RoleObserver
         $users = User::whereHas('roles', function ($query) 
         {
             $query->where('id', 1);
-        })->whereHas('settings', function ($settings)
+        })
+        ->whereHas('settings', function ($settings)
         {
             $settings->where('user_notifications', true);
-        })
-        ->get();
+        })->get();
 
         foreach($users as $user)
         {
                 $user->notify(new RoleCreationNotification($role));
         }
+
     }
 
     public function updated(Role $role)

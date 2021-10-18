@@ -201,7 +201,7 @@
                                                                     <div class="px-4 py-2 font-bold">Email:</div>
                                                                     <div class="px-4 py-2">
                                                                         @can('user_access')
-                                                                        <a class="text-blue-800" href="{{ $user->email }}">{{ $user->email }}</a>
+                                                                        <a class="text-blue-800" href="#">{{ $user->email }}</a>
                                                                         @endcan
                                                                     </div>
                                                                 </div>
@@ -213,13 +213,15 @@
                                                     <div class="bg-white p-3 shadow-sm rounded-sm">
                                                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                                             <h2 class="mb-2 mt-4 font-extrabold float-left tracking-tight text-gray-700">
-                                                                Assigned Clients
+                                                                System Configuration & Activity
                                                             </h2>
                                                         </div>
+                                                            <!-- System Configuration Settings -->
+                                                            @livewire('profile-config-activity',['user' => $user])
                                                     </div>         
                                                 </div>              
                                             </div>
-                                            <!-- End of profile tab -->
+                                            
                                         </div>
                                     </div>
                                 </div>

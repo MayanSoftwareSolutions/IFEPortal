@@ -134,13 +134,4 @@
     }
   </style>
 
-  <script>
-  $(document).on('change', function(){
-    setTimeout(function(){
-       $("#success-message").remove();
-    }, 3000 );
-
-  });
-  </script>
-
 </div>
