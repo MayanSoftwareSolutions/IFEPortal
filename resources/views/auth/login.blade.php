@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img src="{{url('/logos/IFE_LOGO.png')}}" alt="Logo" style="height: 100px; width: 220px;"></a>
+            <img src="{{url('/logos/IFE_LOGO.png')}}" alt="Logo" style="height: 90px; width: 220px;">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

@@ -69,7 +69,7 @@
                         <input type="checkbox" class="form-checkbox text-xs rounded-full" checked>
                     </div>
                 </div>
-                <span class="text-gray-600 dark:text-gray-400 text-xs mt-2"> Board </span>
+                <span class="text-gray-600 dark:text-gray-400 text-xs mt-2"> Notices </span>
                 </div>
                 <div class="flex flex-col items-center">
                 <div class="relative">
@@ -109,21 +109,69 @@
             <p class="text-gray-600 text-sm dark:text-white text-md font-bold"> 
                 User's Activty 
             </p>
-            </div> 
-        @if(count($activity) < 1) 
-        <div class="flex items-start mb-6 rounded justify-between">
-            <span class="rounded-full text-white dark:text-gray-800 p-2 bg-green-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-            </span>
-            <div class="flex items-center w-full justify-between">
-                <div class="flex text-sm flex-col w-full ml-2 items-start justify-between">
-                <p class="block text-xs font-semibold text-gray-700"> Opps... It looks like there has been no recent activity on this account. </p>
-                <p class="text-purple-500 text-xs"> Activity within the last 7 days is shown here. You can turn off activity using the settings icon in the top right hand corner. </p>
+            <div x-data={show:false} class="mt-4 mb-4 mr-4 ">
+                <p class="relative items-right justify-right">
+                    <button  @click="show=!show" class="bg-gray-200 text-gray-700 font-bold border-gray-500 rounded hover:bg-blue-700 hover:text-white px-2 py-1 text-xs focus:outline-none" type="button">
+                    <p x-show="!show">Search</p>
+                    <p x-show="show">Close</p>
+                    </button>
+                    @if($search_from != null)
+                    <button wire:click="resetfields" wire:click="$refresh" class="bg-gray-200 text-gray-700 font-bold border-gray-500 rounded hover:bg-red-600 hover:text-white px-2 py-1 text-xs focus:outline-none" type="button">
+                      Reset
+                    </button>
+                    @endif
+                </p> 
+                <div x-show="show" class="flex w-full px-4 py-3 text-gray-700">
+                  <form class="w-full">
+                    @csrf
+                    <div class="flex flex-wrap inline-block -mx-3 mb-2">
+                      <div class="flex-1 w-full sm:w-full px-3 mb-3 md:mb-0">
+                        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="search_from">
+                          From
+                        </label>
+                        <input type="date" wire:model="search_from" class="appearance-none text-xs font-bold block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 autocomplete-off" id="search_from" placeholder="From">
+                      </div>
+                      @if($search_from != null)
+                      <div class="flex-1 w-full px-3 sm:w-full mb-4 md:mb-2">
+                        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="search_to">
+                          To
+                        </label>
+                        <input type="date" wire:model="search_to" class="appearance-none block w-full text-xs font-bold bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 autocomplete-off" id="search_to" placeholder="To">
+                      </div>
+                      @endif
+                    </div>
+                    <div class="flex flex-wrap inline-block -mx-3">
+                      <div class="flex-1 w-full sm:w-full px-3">
+                        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                          Module
+                        </label>
+                        <div class="relative">
+                          <select wire:model="module" class="block appearance-none w-full bg-gray-200 font-bold border border-gray-200 text-xs font-bold text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <option class="font-bold" value="">All</option>
+                            <option class="font-bold" value="user">Users</option>
+                            <option class="font-bold" value="configuration">Configurations</option>
+                            <option class="font-bold" value="role">Permissions</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
             </div>
-        </div> 
+            </div> 
+        @if(count($activity) < 1) 
+        <div class="flex items-start bg-gray-200 mb-6 border rounded-lg shadow-lg p-4 justify-between">
+            <span class="rounded-full text-white dark:text-gray-800">
+              <span class="rounded-full text-white dark:text-gray-800">
+              <img src="https://img.icons8.com/material/40/000000/jump-rope.png" class="h-7 w-7 m-1 text-gray-800"/>
+            </span>
+            </span>
+            <div class="flex items-center w-full justify-between">
+                <div class="flex text-sm flex-col w-full ml-2 items-center text-center justify-center">
+                <p class="block text-md font-bold text-gray-700"> Opps... We cannot find any activity. If this is incorrect, please contact the administrator </p>
+                </div>
+            </div>
+        </div>
       @else 
       @foreach($activity as $log) 
       <div class="flex items-start mb-6 rounded justify-between">
@@ -145,9 +193,9 @@
         </div>
       </div> 
       @endforeach 
-      <div class="bg-white w-full mx-auto m-1 p-4">
+      <div class="bg-white w-full mx-auto m-1 p-1">
         <div>
-          {{ $activity->links() }}
+          {{ $activity->links('livewire-pagination-links') }}
         </div>
       </div> 
       @endif

@@ -42,10 +42,6 @@ class UserSettings extends Model
 
         protected static $submitEmptyLogs = false;
 
-        protected $dates = [
-            'created_at',
-            'updated_at'
-        ];
 
         protected static $logAttributes = [
             'user_id',

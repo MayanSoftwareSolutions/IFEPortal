@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserSettings;
+use App\Models\Organisations;
 use Illuminate\Support\Facades\Gate;
 
 class NewAccountForm extends Component
@@ -17,11 +18,12 @@ class NewAccountForm extends Component
     public $email;
     public $job_title;
     public $department;
-    public $organisation;
     public $password;
     public $confirmPassword;
     public $selectedRole;
     public $role;
+    public $company = '';
+    public $organisation;
  
 
     public $pages = [
@@ -45,7 +47,7 @@ class NewAccountForm extends Component
             'email' => ['required', 'min:3', 'max:160', 'email', 'unique:users'],
             'job_title' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
             'department' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
-            'organisation' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
+            'company' => ['required',],
 
         ],
         2 => 
@@ -61,7 +63,8 @@ class NewAccountForm extends Component
     {
         $roles = Role::pluck('title', 'id');
         $this->selectedRole = $roles;
-
+        $organisations = Organisations::get();
+        $this->organisation = $organisations;
     }
 
 
@@ -100,7 +103,7 @@ class NewAccountForm extends Component
                 'email' => $this->email,
                 'job_title' => $this->job_title,
                 'department' => $this->department,
-                'organisation' => $this->organisation,
+                'organisation_id' => $this->company,
                 'password' => bcrypt($this->password),
                 ]);
                 

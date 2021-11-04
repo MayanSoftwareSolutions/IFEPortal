@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\UserSettings;
 use App\Repositories\UsersRepository;
 
 class UserController extends Controller
@@ -49,9 +50,9 @@ class UserController extends Controller
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user=User::find($id);
-
         $user->delete();
-
+        $config=UserSettings::where('user_id',$id);
+        $config->delete();
         $success = $user->name. "'s account has been deleted successfully !";
 
         session()->flash('message', $success);

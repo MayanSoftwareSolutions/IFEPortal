@@ -28,7 +28,7 @@ class User extends Authenticatable
             'email',
             'job_title',
             'department',
-            'organisation',
+            'organisation_id',
             'password',
             'last_login',
             'last_login_ip',
@@ -68,7 +68,7 @@ class User extends Authenticatable
             return LogOptions::defaults()->logOnly([
             'name',
             'email',
-            'organisation',
+            'organisation_id',
             'job_title',
             'department',
             'active',]);
@@ -97,7 +97,7 @@ class User extends Authenticatable
         protected static $logAttributes = [
             'name',
             'email',
-            'organisation',
+            'organisation_id',
             'job_title',
             'department',
             'active',
@@ -108,10 +108,15 @@ class User extends Authenticatable
         {
             return $this->belongsToMany(Role::class);
         }
-
+        //Settings relatonship
         public function settings()
         {
             return $this->hasOne(UserSettings::class);
+        }
+        //Company relationship
+        public function company()
+        {
+            return $this->belongsTo(Organisations::class);
         }
 
     }

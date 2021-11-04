@@ -34,4 +34,5 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function ()
     Route::get('/roles', [\App\Http\Controllers\RoleController::class, 'index'])->name('roles');
     Route::get('/roles/{role}', [\App\Http\Controllers\RoleController::class, 'show'])->name('role.show');
     Route::delete('/roles/{role}', [\App\Http\Controllers\RoleController::class, 'destroy'])->name('role.delete');
+    
 });

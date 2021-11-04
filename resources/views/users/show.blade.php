@@ -61,7 +61,7 @@
         </div>
         <br>
           @if (session()->has('message'))
-          <div x-data="{ show: true }" x-show="show">
+          <div x-data="{ show: true }" x-show="show" id="success-message">
                <div class="flex font-medium py-1 px-2 bg-white rounded-md text-green-100 bg-green-700 border border-green-700 ">
                      <div slot="avatar" class="relative mt-3 ml-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather text-white mr-3 feather-check-circle w-5 h-5 mx-2">
@@ -78,7 +78,7 @@
          </div>
           @endif
           @if (session()->has('failed'))
-          <div x-data="{ show: true }" x-show="show">
+          <div x-data="{ show: true }" x-show="show" id="success-message">
             <div class="flex font-medium py-1 px-2 bg-white rounded-md text-red-100 bg-red-700 border border-red-700 ">
                <div slot="avatar" class="relative mt-3 ml-3">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -156,8 +156,10 @@
                                                         <div class="grid grid-cols-3">
                                                             @foreach($users as $members)
                                                             <div class="text-center my-2">
-                                                                <img class="h-16 w-16 rounded-full mx-auto" src="{{ $members->profile_photo_url }}" alt="">
-                                                                <a href="{{ route('user.show', $members->id) }}" class="text-main-color text-xs">{{ $members->name }}</a>
+                                                                <a href="{{ route('user.show', $members->id) }}">
+                                                                <img class="h-8 w-8 rounded-full mx-auto" src="{{ $members->profile_photo_url }}" alt="">
+                                                                <p href="{{ route('user.show', $members->id) }}" class="text-main-color text-xs">{{ $members->name }}</p>
+                                                                </a>
                                                             </div>
                                                             @endforeach
                                                         </div>

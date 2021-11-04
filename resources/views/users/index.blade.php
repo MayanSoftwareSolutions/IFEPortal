@@ -25,6 +25,7 @@
          @csrf
          <form action="#" method="GET" role="search">
             <div class="font-sans mt-4 text-grey-600 bg-gray-100 flex rounded-xl">
+               
                <div class="border rounded overflow-hidden flex">
                   <input type="text" class="px-4 py-2 text-sm border-transparent rounded-sm text-gray-500" name="name" placeholder="Search Accounts">
                   <button class="flex items-center justify-center px-4 border-l">

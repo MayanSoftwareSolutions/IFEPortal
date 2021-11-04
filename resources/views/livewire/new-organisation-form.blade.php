@@ -2,7 +2,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create New Account') }}
+            {{ __('Create New Organisation') }}
         </h2>
     </x-slot>
 
@@ -22,7 +22,7 @@
          <div class="relative">
             <div class="absolute left-0">
             <h5 class="font-extrabold text-lg tracking-tight text-gray-700 ml-3 border-b border-gray-400">
-               User Account Form
+               User Organisation Form
             </h5>
             </div>
                <div class="absolute right-0 block">
@@ -56,9 +56,9 @@
                                             <div class="flex flex-col">
                                                 
                                                 <div class="w-full py-2">
-                                                    <label for="name" class="block text-sm font-bold text-gray-700">Name</label>
-                                                    <input wire:model.lazy="name" type="text" name="name" id="name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full text-gray-800 shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                                    @error('name') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                                                    <label for="account_manager" class="block text-sm font-bold text-gray-700">Organisation Account Manager</label>
+                                                    <input wire:model.lazy="account_manager" type="text" name="account_manager" id="name" autocomplete="account_manager" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full text-gray-800 shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    @error('account_manager') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
                                                 </div>
 
                                                 <div class="w-full py-2">
@@ -80,14 +80,9 @@
                                                 </div>
 
                                                 <div class="w-full py-2">
-                                                    <label for="company" class="block text-sm font-bold text-gray-700">Select Company</label>
-                                                    <select name="company" wire:model="company" id="company" class="block rounded-md text-gray-800 shadow-sm mt-1 block w-full">
-                                                        <option value="">Select Company</option>
-                                                        @foreach($organisation as $assigned_organisation)
-                                                        <option value="{{ $assigned_organisation->id }}">{{ $assigned_organisation->organisation_name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('company') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                                                    <label for="organisation" class="block text-sm font-bold text-gray-700">Organisation</label>
+                                                    <input wire:model.lazy="organisation" type="text" name="organisation" id="organisation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full text-gray-800 shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    @error('organisation') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
                                                 </div>
 
                                             </div>
@@ -173,4 +168,5 @@
     <img src="/images/object/1.png" class="absolute h-full max-w-1/2 hidden lg:block right-0 top-0"/>
 </div>
 @endcan
+
 

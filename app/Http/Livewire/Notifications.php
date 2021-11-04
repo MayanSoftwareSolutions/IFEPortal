@@ -13,7 +13,6 @@ class Notifications extends Component
 
     protected $listener = ['markNotificationAsRead', 'read'];
 
-
     public function markNotificationAsRead($id)
     {
         Auth::user()->unreadNotifications->where('id', $id)->markAsRead();
