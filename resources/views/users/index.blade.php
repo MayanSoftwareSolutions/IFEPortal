@@ -102,10 +102,13 @@
                                        Title
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                       Role
+                                       Permissions
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                       Organisation
+                                       Status
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                       Last Seen
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                        Last Login
@@ -139,31 +142,46 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-500">
                                        @foreach ($user->roles as $role)
-                                       @if($role->title === "Admin")
-                                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100">
-                                       {{ $role->title }}
-                                       </span>
-                                       @else 
-                                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-orange-800">
-                                       {{ $role->title }}
-                                       </span>
-                                       @endif
+                                       <div class="text-sm text-gray-500">
+                                          {{ $role->title }}
+                                       </div>
                                        @endforeach
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                       <div class="text-sm font-semibold text-gray-500">{{ $user->organisation }}</div>
+                                       <div class="text-sm font-semibold text-gray-500">
+                                          @if(Cache::has('user-is-online-' . $user->id))
+                                             <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-green-600 rounded-full">
+                                                Online
+                                             </span>
+                                          @else
+                                             <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+                                                Offline
+                                             </span>
+                                          @endif
+                                       </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                       @if($user->last_seen !== Null)
+                                       <span class="px-2 inline-flex text-xs text-gray-500 font-bold leading-5 rounded-full bg-white">
+                                          {{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}
+                                       </span>
+                                       @else
+                                       <span class="px-2 inline-flex text-xs text-gray-500 font-bold leading-5 rounded-full bg-white">
+                                           
+                                       </span>
+                                       @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                        @if($user->active == 1)
-                                       <span class="px-2 inline-flex text-xs font-semibold leading-5 font-semibold rounded-full bg-white text-gray-800">
+                                       <span class="px-2 inline-flex text-xs text-gray-500 font-bold leading-5 rounded-full bg-white">
                                        @if($user->last_login !== null)
                                        {{ $user->last_login->diffForHumans() }}
                                        @else
-                                       Active
+                                       No Login
                                        @endif
                                        </span>
                                        @else
-                                       <span class="px-2 inline-flex text-xs font-semibold leading-5 font-semibold rounded-full bg-white text-gray-800">
+                                       <span class="px-2 inline-flex text-xs text-gray-500 font-bold leading-5 rounded-full bg-white">
                                        @if($user->last_login !== null)
                                        Deactivated {{ $user->last_login->diffForHumans() }}
                                        @else

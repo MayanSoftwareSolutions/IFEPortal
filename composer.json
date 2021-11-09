@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "livewire-ui/modal": "^1.0",
         "livewire/livewire": "^2.6",
+        "maatwebsite/excel": "^3.1",
         "pusher/pusher-php-server": "^7.0",
         "spatie/laravel-activitylog": "^3.17",
         "torann/laravel-repository": "^0.6.1"

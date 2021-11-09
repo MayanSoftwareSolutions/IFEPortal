@@ -33,6 +33,7 @@ class User extends Authenticatable
             'last_login',
             'last_login_ip',
             'active',
+            'last_seen',
         ];
 
 

@@ -1,8 +1,8 @@
 <div>
-  <div class="flex p-3">
+  <div class="p-3">
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 rounded-lg "> 
         @can('other_config') 
-        <div class="col-span-1 bg-white p-3 rounded">
+        <div class="col-span-1 bg-gray-200 p-3 rounded">
             <div class="shadow-lg rounded-xl w-full md:w-60 p-4 bg-white dark:bg-gray-800 relative overflow-hidden">
             <p class="text-gray-600 dark:text-white text-sm font-bold mb-6"> User's Configuration </p>
             <div class="grid grid-cols-3 gap-4">
@@ -102,7 +102,7 @@
        
       @endcan 
        
-    <div class="col-span-2 bg-white p-3 rounded"> 
+    <div class="col-span-2 bg-gray-200 p-3 rounded"> 
 
         <div class="rounded-lg shadow-lg w-full md:w-full p-4 bg-white dark:bg-gray-800 overflow-hidden">
             <div class="w-full items-center justify-center mb-8">

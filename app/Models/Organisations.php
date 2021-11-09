@@ -46,7 +46,7 @@ class Organisations extends Model
         ];
 
         //Users relationship
-        public function company()
+        public function users()
         {
             return $this->hasMany(User::class);
         }

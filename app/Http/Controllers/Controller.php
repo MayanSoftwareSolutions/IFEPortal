@@ -14,11 +14,11 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->middleware(function($request, $next){
-            if (toast('success_message')) {
-                Alert::success(session('success_message'), 'success');
-                }
-        return $next($request);
-    });
+        // $this->middleware(function($request, $next){
+        //     if (toast('success_message')) {
+        //         Alert::success(session('success_message'), 'success');
+        //         }
+        // return $next($request);
+    // });
     }
 }

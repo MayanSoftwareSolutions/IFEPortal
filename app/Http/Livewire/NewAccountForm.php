@@ -22,7 +22,7 @@ class NewAccountForm extends Component
     public $confirmPassword;
     public $selectedRole;
     public $role;
-    public $company = '';
+    public $selectedOrganisation;
     public $organisation;
  
 
@@ -47,7 +47,7 @@ class NewAccountForm extends Component
             'email' => ['required', 'min:3', 'max:160', 'email', 'unique:users'],
             'job_title' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
             'department' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
-            'company' => ['required',],
+            'organisation' => ['required',],
 
         ],
         2 => 
@@ -63,14 +63,14 @@ class NewAccountForm extends Component
     {
         $roles = Role::pluck('title', 'id');
         $this->selectedRole = $roles;
-        $organisations = Organisations::get();
-        $this->organisation = $organisations;
+        $organisations = Organisations::pluck('organisation_name', 'id');
+        $this->selectedOrganisation = $organisations;
     }
 
 
     public function updated($propertyName)
     {
-            $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
+        $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
     }
 
     public function goToNextPage()
@@ -99,13 +99,13 @@ class NewAccountForm extends Component
         $this->validate($rules);
 
         $create = User::create([
-                'name' => $this->name,
-                'email' => $this->email,
-                'job_title' => $this->job_title,
-                'department' => $this->department,
-                'organisation_id' => $this->company,
-                'password' => bcrypt($this->password),
-                ]);
+            'name' => $this->name,
+            'email' => $this->email,
+            'job_title' => $this->job_title,
+            'department' => $this->department,
+            'organisation_id' => $this->organisation,
+            'password' => bcrypt($this->password),
+            ]);
                 
         $create->roles()->sync($this->role);
 

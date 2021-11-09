@@ -42,11 +42,10 @@ class RoleController extends Controller
 
         $profile_users = DB::table('role_user')
         ->join('users', 'id', '=', 'user_id')
-        ->select('id', 'name', 'email', 'job_title', 'department', 'organisation', 'profile_photo_path')
+        ->select('id', 'name', 'email', 'job_title', 'department', 'organisation_id', 'profile_photo_path')
         ->where('role_id', $id)
         ->paginate(4);
 
-       
        return view('roles.show', compact('role', 'profile_users'));
     }
 

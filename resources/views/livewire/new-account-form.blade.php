@@ -80,14 +80,16 @@
                                                 </div>
 
                                                 <div class="w-full py-2">
-                                                    <label for="company" class="block text-sm font-bold text-gray-700">Select Company</label>
-                                                    <select name="company" wire:model="company" id="company" class="block rounded-md text-gray-800 shadow-sm mt-1 block w-full">
-                                                        <option value="">Select Company</option>
-                                                        @foreach($organisation as $assigned_organisation)
-                                                        <option value="{{ $assigned_organisation->id }}">{{ $assigned_organisation->organisation_name }}</option>
+                                                    <label for="organisation" class="block text-sm font-bold text-gray-700">Select Organisation</label>
+                                                    <select name="organisation" wire:model="organisation" id="organisation" class="block rounded-md text-gray-800 shadow-sm mt-1 block w-full">
+                                                        <option value="">Select Organisation</option>
+                                                        @if(!empty($selectedOrganisation))
+                                                        @foreach($selectedOrganisation as $org_id => $organisations)
+                                                        <option value="{{ $org_id }}">{{ $organisations }}</option>
                                                         @endforeach
+                                                        @endif
                                                     </select>
-                                                    @error('company') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                                                    @error('organisation') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
                                                 </div>
 
                                             </div>

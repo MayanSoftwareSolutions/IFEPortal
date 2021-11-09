@@ -79,8 +79,15 @@
     
                                                 <div class="w-full py-2">
                                                     <label for="organisation" class="block text-sm font-bold text-gray-700">Organisation</label>
-                                                    <input wire:model.lazy="organisation" type="text" name="organisation" id="organisation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full text-gray-800 shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                                    @error('organisation') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                                                    <select name="organisation" wire:model="organisation" id="organisation" class="form-multiselect block rounded-md shadow-sm mt-1 block w-full text-gray-800 text-sm">
+                                                        @if(!empty($selectedOrganisation))
+                                                        <option value="{{ $currentOrganisation->id }}">{{ $currentOrganisation->organisation_name }}</option>
+                                                        @foreach($selectedOrganisation as $org_id => $organisations)
+                                                        <option value="{{ $org_id }}">{{ $organisations }}</option>
+                                                        @endforeach
+                                                        @endif
+                                                    </select>
+                                                    @error('role') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
                                                 </div>
     
                                             </div>

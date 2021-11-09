@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\UserSettings;
+use App\Models\Organisations;
 use App\Repositories\UsersRepository;
 
 class UserController extends Controller

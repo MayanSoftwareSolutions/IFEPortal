@@ -25,6 +25,7 @@
             <div class="relative">
                 <div class="absolute right-0 block">
                 @can('user_edit')
+                @if($user->id != Auth::user()->id)
                     <div class="inline-block">
                         <div class="flex items-center justify-center w-full mb-12">
                             <form method="post" id="activetoggle" action="{{ route('user.deactivate', $user->id) }}">
@@ -55,6 +56,7 @@
                             }
                         </style>
                     </div>
+                    @endif
                 @endcan
                 </div>
             </div>
@@ -212,7 +214,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- End of about section -->
-                                                    <div class="bg-white p-3 shadow-sm rounded-sm">
+                                                    <div class="bg-gray-200 p-3 shadow-sm rounded-lg">
                                                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                                             <h2 class="mb-2 mt-4 font-extrabold float-left tracking-tight text-gray-700">
                                                                 System Configuration & Activity

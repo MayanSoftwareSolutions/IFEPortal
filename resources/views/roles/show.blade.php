@@ -186,7 +186,7 @@
                                          <div class="text-sm text-gray-500">{{ $profile_user->department }}</div>
                                       </td>
                                       <td class="px-6 py-4 whitespace-nowrap">
-                                         <div class="text-sm text-gray-500">{{ $profile_user->organisation }}</div>
+                                         <div class="text-sm text-gray-500"></div>
                                       </td>
                                       <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('user.show', $profile_user->id) }}" class="inline-flex bg-white hover:bg-blue-600 text-gray-800 hover:text-white text-xs font-bold py-1 px-2 border border-gray-400 rounded shadow">Show</a>

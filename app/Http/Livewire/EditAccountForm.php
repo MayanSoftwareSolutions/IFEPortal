@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Organisations;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\UserPermissionChangeNotification;
 
@@ -19,6 +20,8 @@ class EditAccountForm extends Component
     public $job_title;
     public $department;
     public $organisation;
+    public $selectedOrganisation;
+    public $currentOrganisation;
     public $password;
     public $confirmPassword;
     public $user;
@@ -48,7 +51,7 @@ class EditAccountForm extends Component
             'email' => ['required', 'min:3', 'max:160', 'email'],
             'job_title' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
             'department' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
-            'organisation' => ['required', 'min:3', 'max:100', 'regex:/^[\pL\s\-]+$/u'],
+            'organisation' => ['required'],
 
         ],
         2 => 
@@ -64,7 +67,8 @@ class EditAccountForm extends Component
 
         $roles = Role::pluck('title', 'id');
         $this->selectedRole = $roles;
-
+        $this->currentOrganisation =Organisations::where('id', $this->user->organisation_id)->first();
+        $this->selectedOrganisation = Organisations::where('id', '!=', $this->currentOrganisation->id)->pluck('organisation_name', 'id');
         if($user) 
         {
             $this->user = $user;
@@ -72,7 +76,7 @@ class EditAccountForm extends Component
             $this->email = $this->user->email;
             $this->job_title = $this->user->job_title;
             $this->department = $this->user->department;
-            $this->organisation = $this->user->organisation;
+            $this->organisation = $this->currentOrganisation->id;
 
             $userRole = $this->user->roles()->pluck('role_id')->first();
             $findRole = Role::where('id', $userRole)->first();
@@ -114,7 +118,7 @@ class EditAccountForm extends Component
                 'email' => $this->email,
                 'job_title' => $this->job_title,
                 'department' => $this->department,
-                'organisation' => $this->organisation,
+                'organisation_id' => $this->organisation,
             ]);
 
         $updateRole = User::findOrFail($this->user->id);
